@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%; /* #2F3136 - Discord dark */
+  --foreground: 0 0% 98%; /* #FEFEFE */
+  --muted: 240 3.7% 15.9%; /* #40444B - Discord tertiary */
+  --muted-foreground: 240 5% 64.9%; /* #B9BBBE */
+  --popover: 240 10% 3.9%; /* #2F3136 */
+  --popover-foreground: 0 0% 98%; /* #FEFEFE */
+  --card: 240 4% 14.7%; /* #36393F - Discord secondary */
+  --card-foreground: 0 0% 98%; /* #FEFEFE */
+  --border: 240 3.7% 15.9%; /* #40444B */
+  --input: 240 3.7% 15.9%; /* #40444B */
+  --primary: 235 86% 65%; /* #5865F2 - Discord blurple */
+  --primary-foreground: 0 0% 98%; /* #FEFEFE */
+  --secondary: 240 4% 14.7%; /* #36393F */
+  --secondary-foreground: 0 0% 98%; /* #FEFEFE */
+  --accent: 240 3.7% 15.9%; /* #40444B */
+  --accent-foreground: 0 0% 98%; /* #FEFEFE */
+  --destructive: 0 84.2% 60.2%; /* #ED4245 - Discord red */
+  --destructive-foreground: 0 0% 98%; /* #FEFEFE */
+  --ring: 235 86% 65%; /* #5865F2 */
+  --radius: 0.5rem;
+  
+  /* Discord specific colors */
+  --discord-blurple: 235 86% 65%; /* #5865F2 */
+  --discord-green: 139 66% 68%; /* #57F287 */
+  --discord-yellow: 48 100% 67%; /* #FEE75C */
+  --discord-red: 0 84% 60%; /* #ED4245 */
+  --discord-dark: 240 11% 19%; /* #2F3136 */
+  --discord-secondary: 240 6% 22%; /* #36393F */
+  --discord-tertiary: 240 7% 25%; /* #40444B */
+}
+
+.light {
+  --background: 0 0% 100%; /* #FFFFFF */
+  --foreground: 20 14.3% 4.1%; /* #0F172A */
+  --muted: 60 4.8% 95.9%; /* #F1F5F9 */
+  --muted-foreground: 25 5.3% 44.7%; /* #64748B */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 20 14.3% 4.1%; /* #0F172A */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 20 14.3% 4.1%; /* #0F172A */
+  --border: 20 5.9% 90%; /* #E2E8F0 */
+  --input: 20 5.9% 90%; /* #E2E8F0 */
+  --primary: 235 86% 65%; /* #5865F2 */
+  --primary-foreground: 0 0% 98%; /* #FEFEFE */
+  --secondary: 60 4.8% 95.9%; /* #F1F5F9 */
+  --secondary-foreground: 24 9.8% 10%; /* #1E293B */
+  --accent: 60 4.8% 95.9%; /* #F1F5F9 */
+  --accent-foreground: 24 9.8% 10%; /* #1E293B */
+  --destructive: 0 84.2% 60.2%; /* #ED4245 */
+  --destructive-foreground: 0 0% 98%; /* #FEFEFE */
+  --ring: 235 86% 65%; /* #5865F2 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .discord-bg-blurple {
+    background-color: hsl(var(--discord-blurple));
+  }
+  
+  .discord-bg-green {
+    background-color: hsl(var(--discord-green));
+  }
+  
+  .discord-bg-yellow {
+    background-color: hsl(var(--discord-yellow));
+  }
+  
+  .discord-bg-red {
+    background-color: hsl(var(--discord-red));
+  }
+  
+  .discord-bg-dark {
+    background-color: hsl(var(--discord-dark));
+  }
+  
+  .discord-bg-secondary {
+    background-color: hsl(var(--discord-secondary));
+  }
+  
+  .discord-bg-tertiary {
+    background-color: hsl(var(--discord-tertiary));
+  }
+  
+  .discord-text-blurple {
+    color: hsl(var(--discord-blurple));
+  }
+  
+  .discord-text-green {
+    color: hsl(var(--discord-green));
+  }
+  
+  .discord-text-yellow {
+    color: hsl(var(--discord-yellow));
+  }
+  
+  .discord-text-red {
+    color: hsl(var(--discord-red));
+  }
+
+  .nav-item {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .nav-item:hover {
+    @apply transform scale-105;
+  }
+
+  .nav-item.active {
+    @apply discord-bg-blurple text-white shadow-lg;
+  }
+
+  .loading-shimmer {
+    @apply animate-pulse bg-muted;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-sm bg-opacity-80;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--discord-dark));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--discord-tertiary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Discord-specific button styles */
+.discord-button {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 ease-in-out;
+}
+
+.discord-button:hover {
+  @apply transform scale-105 shadow-lg;
+}
+
+.discord-button-primary {
+  @apply discord-button discord-bg-blurple text-white;
+}
+
+.discord-button-primary:hover {
+  @apply bg-blue-600;
+}
+
+.discord-button-success {
+  @apply discord-button discord-bg-green text-white;
+}
+
+.discord-button-success:hover {
+  @apply bg-green-600;
+}
+
+.discord-button-warning {
+  @apply discord-button discord-bg-yellow text-black;
+}
+
+.discord-button-warning:hover {
+  @apply bg-yellow-500;
+}
+
+.discord-button-danger {
+  @apply discord-button discord-bg-red text-white;
+}
+
+.discord-button-danger:hover {
+  @apply bg-red-600;
+}
